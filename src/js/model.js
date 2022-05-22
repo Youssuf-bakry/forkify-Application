@@ -17,6 +17,7 @@ export const loadRecipe = async function (id) {
   try {
     //أضفنا ال id  كأرجيومنت لأن هنا هو ملوش أكسس فبالتالي هنخلي الكنترولر يناديه
     const data = await getJSON(`${API_URL}/${id}`);
+
     const { recipe } = data.data; //destructuring instead of data.data.recipe
     state.recipe = {
       id: recipe.id,

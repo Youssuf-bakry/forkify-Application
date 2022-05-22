@@ -6,7 +6,7 @@ import PaginationView from './views/paginationView.js';
 import 'core-js/stable'; //  for polyfilling صطبناه الأول من التيرمينال وده مطلوب علشان المتصفحات القديمة
 import { async } from 'regenerator-runtime'; // نفس الكلام بس ده مهم لل async
 import paginationView from './views/paginationView.js';
-
+import bookmarksView from './views/bookmarksView.js';
 // if (module.hot) {
 //   module.hot.accept();
 // }
@@ -19,9 +19,8 @@ const controlRecipes = async function () {
 
     // 0) Update Results View to mark the selected search result
     resultsView.update(model.getSearchResultsPage());
-    /*
-    //*كان ممكن نستخدم رندر بدل أبديت لكن طبعا ده بيخليه يعمل رندر لكامل نتائج البحث ولهذا عملنا ميثود اسمها ابديت
-*/
+    bookmarksView.update(model.state.bookmarks);
+
     // 1) loading recipe
     await model.loadRecipe(id);
 
@@ -77,12 +76,15 @@ const controlServings = function (newServings) {
 };
 
 const controlAddBookmark = function () {
+  // add/romove bookmark
   if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
-  else {
-    model.deleteBookmark(model.state.recipe.id);
-  }
+  else model.deleteBookmark(model.state.recipe.id);
 
+  //update bookmarsk
   recipeView.update(model.state.recipe);
+
+  // render them
+  bookmarksView.render(model.state.bookmarks);
 };
 
 const init = function () {

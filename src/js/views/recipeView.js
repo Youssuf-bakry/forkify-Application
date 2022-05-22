@@ -28,10 +28,7 @@ class RecipeView extends View {
       handler();
     });
   }
-  //! deleted line from 84
-  /*   <svg>
-    <use href="${icons}#icon-user"></use>
-   </svg> */
+
   _generateMarkup() {
     return `
       <figure class="recipe__fig">
@@ -88,10 +85,9 @@ class RecipeView extends View {
 
 <button class="btn--round btn--bookmark">
   <svg class="">
-    <use href="${icons}#icon-bookmark
-     ${this._data.bookmarked ? '-fill' : ''}
-    
-      "></use>
+    <use href="${icons}#icon-bookmark${
+      this._data.bookmarked ? '-fill' : ''
+    }"></use>
   </svg>
 </button>
   </div>
