@@ -80,7 +80,7 @@ export default class View {
     // console.log(this._errorMessage);
   }
 
-  renderMessage(message = this._successMessage) {
+  renderMessage(message = this._message) {
     const markup = `
                 <div class="message">
                     <div>

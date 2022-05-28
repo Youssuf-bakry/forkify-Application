@@ -1,4 +1,5 @@
 import * as model from './model.js';
+import { MODAL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultView.js';
@@ -7,6 +8,7 @@ import 'core-js/stable'; //  for polyfilling صطبناه الأول من الت
 import { async } from 'regenerator-runtime'; // نفس الكلام بس ده مهم لل async
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
+import addRecipeView from './views/addRecipeView.js';
 // if (module.hot) {
 //   module.hot.accept();
 // }
@@ -36,7 +38,7 @@ const controlRecipes = async function () {
     */
   } catch (err) {
     recipeView.renderError();
-    console.err(err);
+    console.error(err);
   }
 };
 
@@ -92,6 +94,38 @@ const controlAddBookmark = function () {
 const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
+
+const controlAddRecipe = async function (newRecipe) {
+  try {
+    //show the spinnder
+    addRecipeView.renderSpinner();
+
+    //Upload the new recipe data
+    await model.uploadRecipe(newRecipe);
+    console.log(model.state.recipe);
+
+    //Render the recipe
+    recipeView.render(model.state.recipe);
+
+    // success message
+    addRecipeView.renderMessage();
+
+    //render bookmark view
+    bookmarksView.render(model.state.bookmarks);
+
+    //change id in the url && witohut reloadin the page
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
+
+    //close the window to see the recipe
+    setTimeout(function () {
+      addRecipeView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000); // to have time to see the success message
+  } catch (err) {
+    console.error('👺👹', err);
+    addRecipeView.renderError(err.message);
+  }
+};
+
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   searchView.addHandlerSearch(controlSearchResults);
@@ -99,6 +133,7 @@ const init = function () {
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
   PaginationView.addHandlerClick(controlPagination);
+  addRecipeView.addHandlerUpload(controlAddRecipe);
 };
 init();
 /*
