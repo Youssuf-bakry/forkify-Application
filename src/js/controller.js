@@ -1,17 +1,16 @@
+import 'core-js/es5';
+import 'core-js/es6';
+import 'core-js/es7';
+import 'regenerator-runtime/runtime';
 import * as model from './model.js';
 import { MODAL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultView.js';
 import PaginationView from './views/paginationView.js';
-import 'core-js/stable'; //  for polyfilling صطبناه الأول من التيرمينال وده مطلوب علشان المتصفحات القديمة
-import { async } from 'regenerator-runtime'; // نفس الكلام بس ده مهم لل async
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
-// if (module.hot) {
-//   module.hot.accept();
-// }
 
 const controlRecipes = async function () {
   try {

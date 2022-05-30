@@ -4,21 +4,24 @@
   "description": "Recipe App",
   "default": "index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
-  "targets": {
-    "main": false
-  },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build --no-minify index.html --out-dir ./dist"
   },
   "author": "Yosef Bakry",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.2.1",
-    "parcel": "^2.2.1"
+    "@babel/core-7.12": "npm:@babel/core@7.12.9",
+    "@parcel/transformer-sass": "^2.2.1"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
   },
   "dependencies": {
-    "core-js": "^2.5.7",
-    "fractional": "^1.0.0"
+    "@babel/polyfill": "^7.12.1",
+    "core-js": "^2.6.12",
+    "fracty": "^1.0.11",
+    "parcel-bundler": "^1.12.5",
+    "regenerator-runtime": "^0.13.9"
   }
 }

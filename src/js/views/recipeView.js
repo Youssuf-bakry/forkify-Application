@@ -1,9 +1,10 @@
 import View from './View.js';
-import icons from 'url:../../img/icons.svg';
+// import icons from 'url:../../img/icons.svg'; parcel 2
+import icons from '../../img/icons.svg';
 /*because the javsacript is getting icons from 'dist' flder during
 production phase(parcel) but it should get it from 'src'
 console.log(icons);*/
-import { Fraction } from 'fractional';
+import { fracty } from 'fracty';
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
   _errorMessage = 'We could not find the recipe . Please try another one! ';
@@ -127,7 +128,7 @@ class RecipeView extends View {
         <use href="${icons}#icon-check"></use>
       </svg>
       <div class="recipe__quantity">${
-        ing.quantity ? new Fraction(ing.quantity).toString() : ''
+        ing.quantity ? fracty(ing.quantity).toString() : ''
       }</div>
       <div class="recipe__description">
         <span class="recipe__unit">${ing.unit}</span>
