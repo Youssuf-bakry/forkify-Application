@@ -4,7 +4,7 @@ import icons from '../../img/icons.svg';
 /*because the javsacript is getting icons from 'dist' flder during
 production phase(parcel) but it should get it from 'src'
 console.log(icons);*/
-import { fracty } from 'fracty';
+import fracty from 'fracty';
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
   _errorMessage = 'We could not find the recipe . Please try another one! ';
