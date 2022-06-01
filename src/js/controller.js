@@ -1,7 +1,7 @@
-import 'core-js/es5';
-import 'core-js/es6';
-import 'core-js/es7';
-import 'regenerator-runtime/runtime';
+// import 'core-js/es5';
+// import 'core-js/es6';
+// import 'core-js/es7';
+// import 'regenerator-runtime/runtime';
 import * as model from './model.js';
 import { MODAL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
