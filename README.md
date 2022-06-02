@@ -1,7 +1,7 @@
 # Forkify Project
 **search or even create your own recipe.**
 
-![This is an image]([https://myoctocat.com/assets/images/base-octocat.svg](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/869/334/datas/original.jpg)
+![This is an image](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/869/334/datas/original.jpg)
 
 
 
